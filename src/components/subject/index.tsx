@@ -15,10 +15,11 @@ function Subject() {
   const { val, setVal } = useContext(BtnContext);
   const handleChangeImg = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    let c = 0;
-    Object.values(dataForm).map((i) => i.trim() !== "" && (c += 1));
-
-    if (file && c === 5) {
+    let count = 0;
+    Object.values(dataForm).map((i) => i.trim() !== "" && (count += 1));
+    console.log(count);
+    
+    if (file && count === 5) {
       const url: Url = URL.createObjectURL(file);
       setSelectImg(url);
       setLoading(true);
