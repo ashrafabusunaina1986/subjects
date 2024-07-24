@@ -7,7 +7,7 @@ export const POST = async (request: Request) => {
   // ⚠️ The below code is for App Router Route Handlers only
   
     const blob = await put(
-      `subjects/${filename}`,
+      `${filename}`,
       request.body as ReadableStream,
       {
         access: "public",
