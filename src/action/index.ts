@@ -8,28 +8,28 @@ import { revalidatePath } from "next/cache";
 //add subject
 export async function AddSubjectAction(fd:FormData, dataForm: any, revalidUrl: string) {
   const file:File=fd.get('image') as File
-  const res = await fetch(`https://subjects-ss.vercel.app/api/avatar/upload?filename=${file.name}`, {
-    method: "POST",
-    body: file,
-  });
+  // const res = await fetch(`https://subjects-ss.vercel.app/api/avatar/upload?filename=${file.name}`, {
+  //   method: "POST",
+  //   body: file,
+  // });
 
-  if (!res.ok) console.log(await res.json());
-  const b = await res.json();
+  // if (!res.ok) console.log(await res.json());
+  // const b = await res.json();
   
-  db();
-  const s = {
-    title: dataForm.title,
-    description: dataForm.description,
-    country: dataForm.country,
-    city: dataForm.city,
-    region: dataForm.region,
-    image: {
-      filename: b.pathname,
-      url: b.url,
-    },
-    endDate: new Date().toDateString(),
-  };
-  await Subject.create(s);
+  // db();
+  // const s = {
+  //   title: dataForm.title,
+  //   description: dataForm.description,
+  //   country: dataForm.country,
+  //   city: dataForm.city,
+  //   region: dataForm.region,
+  //   image: {
+  //     filename: b.pathname,
+  //     url: b.url,
+  //   },
+  //   endDate: new Date().toDateString(),
+  // };
+  // await Subject.create(s);
 
   revalidatePath(revalidUrl);
   return { success: true };
