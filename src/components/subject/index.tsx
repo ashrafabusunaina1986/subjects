@@ -30,16 +30,15 @@ function Subject() {
           body: file,
         });
 
-        if (res.ok) {
-          const b = await res.json();
-          console.log(b);
-          setDataForm({
-            ...dataForm,
-            image: file.name,
-            pathname: b.pathname,
-            url: b.url,
-          });
-        }
+        if (!res.ok) console.log(await res.json());
+        const b = await res.json();
+        console.log(b);
+        setDataForm({
+          ...dataForm,
+          image: file.name,
+          pathname: b.pathname,
+          url: b.url,
+        });
       } catch (error) {
         console.log(error);
       }
