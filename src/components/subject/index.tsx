@@ -25,7 +25,7 @@ function Subject() {
       setSelectImg(url);
       setLoading(true);
     
-        const res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
+        const res = await fetch(`https://subjects-s.vercel.app/api/avatar/upload?filename=${file.name}`, {
           method: "POST",
           body: file,
         });
