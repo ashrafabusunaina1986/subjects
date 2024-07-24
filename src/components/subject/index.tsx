@@ -25,14 +25,14 @@ function Subject() {
       setSelectImg(url);
       setLoading(true);
 
-      const res = await fetch(`https://subjects-s.vercel.app/api/avatar/upload?filename=${file.name}`, {
-        method: "POST",
-        body: file,
-      });
+      // const res = await fetch(`https://subjects-s.vercel.app/api/avatar/upload?filename=${file.name}`, {
+      //   method: "POST",
+      //   body: file,
+      // });
 
-      if (!res.ok) console.log(await res.json());
-      const b = await res.json();
-      console.log(b);
+      // if (!res.ok) console.log(await res.json());
+      // const b = await res.json();
+      // console.log(b);
       // setDataForm({
       //   ...dataForm,
       //   image: file.name,
@@ -46,13 +46,21 @@ function Subject() {
   async function handleAddSubjectAction(formData: FormData) {
     const file: File = formData.get("image") as File;
     if (file) {
-      const b = await AddSubjectAction(formData, dataForm, "/");
-      console.log(b);
+      const res = await fetch(`https://subjects-s.vercel.app/api/avatar/upload?filename=${file.name}`, {
+        method: "POST",
+        body: file,
+      });
 
-      setDataForm(initialFcs);
-      setSelectImg("");
-      setVal({ stateDialog: false });
-      router.push("/");
+      if (!res.ok) console.log(await res.json());
+      const b = await res.json();
+      console.log(b);
+      // const b1 = await AddSubjectAction(formData, dataForm, "/");
+      // console.log(b1);
+
+      // setDataForm(initialFcs);
+      // setSelectImg("");
+      // setVal({ stateDialog: false });
+      // router.push("/");
     }
   }
   return (

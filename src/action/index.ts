@@ -8,13 +8,13 @@ import { revalidatePath } from "next/cache";
 //add subject
 export async function AddSubjectAction(fd:FormData, dataForm: any, revalidUrl: string) {
   const file:File=fd.get('image') as File
-  const res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
-    method: "POST",
-    body: file,
-  });
+  // const res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
+  //   method: "POST",
+  //   body: file,
+  // });
 
-  if (!res.ok) console.log(await res.json());
-  const b = await res.json();
+  // if (!res.ok) console.log(await res.json());
+  // const b = await res.json();
   
   db();
   // const s = {
