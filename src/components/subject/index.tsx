@@ -46,7 +46,7 @@ function Subject() {
   async function handleAddSubjectAction(formData: FormData) {
     const file: File = formData.get("image") as File;
     if (file) {
-      const res = await fetch(`https://subjects-s.vercel.app/api/avatar/upload?filename=${file.name}`, {
+      const res = await fetch(`https://subjects-ss.vercel.app/api/avatar/upload?filename=${file.name}`, {
         method: "POST",
         body: file,
       });
