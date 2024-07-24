@@ -19,29 +19,31 @@ function Subject() {
     let count = 0;
     Object.values(dataForm).map((i) => i.trim() !== "" && (count += 1));
     console.log(count);
-    
+
     if (file && count === 5) {
       const url: Url = URL.createObjectURL(file);
       setSelectImg(url);
       setLoading(true);
-      const res = await fetch(
-        `/api/avatar/upload?filename=${file.name}`,
-        {
+      try {
+        const res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
           method: "POST",
           body: file,
-        }
-      );
-
-      if (res.ok) {
-        const b =( await res.json()) as PutBlobResult;
-
-        setDataForm({
-          ...dataForm,
-          image: file.name,
-          pathname: b.pathname,
-          url: b.url,
         });
+
+        if (res.ok) {
+          const b = (await res.json()) ;
+
+          setDataForm({
+            ...dataForm,
+            image: file.name,
+            pathname: b.pathname,
+            url: b.url,
+          });
+        }
+      } catch (error) {
+        console.log(error);
       }
+
       setLoading(false);
     }
   };
