@@ -13,7 +13,7 @@ export async function AddSubjectAction(
 ) {
   const file: File = fd.get("image") as File;
   let res = await fetch(
-    `http:localhost:3000/api/avatar/upload?filename=${file.name}`,
+    `https://subjects-ss.vercel.app/api/avatar/upload?filename=${file.name}`,
     {
       method: "POST",
       body: file,
