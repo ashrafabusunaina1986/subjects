@@ -108,7 +108,7 @@ function Cf({
   };
 
   return (
-    <form  onSubmit={ons}>
+    <form  action={ons}>
       {fCs.map((item) => ie(item))}
       <div className="flex flex-row gap-0 p-3 mt-4 font-bold text-sm w-full">
         <button
