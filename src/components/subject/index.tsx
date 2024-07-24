@@ -6,6 +6,7 @@ import AddSubject from "../add-subject";
 import { AddSubjectAction } from "@/action";
 import { BtnContext } from "@/context";
 import { useRouter } from "next/navigation";
+import { PutBlobResult } from "@vercel/blob";
 
 function Subject() {
   const router = useRouter();
@@ -32,7 +33,7 @@ function Subject() {
       );
 
       if (res.ok) {
-        const b = await res.json();
+        const b =( await res.json()) as PutBlobResult;
 
         setDataForm({
           ...dataForm,

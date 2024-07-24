@@ -1,14 +1,20 @@
 import { NextResponse } from "next/server";
-import {put} from '@vercel/blob'
-export const POST=async(request:Request)=>{
-    const { searchParams } = new URL(request.url);
-    const filename = searchParams.get('filename') as string;
-  
-    // ⚠️ The below code is for App Router Route Handlers only
-    const blob = await put(`subjects/${filename}` , request.body as ReadableStream, {
-      access:'public',
-    });
-    
+import { put } from "@vercel/blob";
+export const POST = async (request: Request) => {
+  const { searchParams } = new URL(request.url);
+  const filename = searchParams.get("filename") as string;
 
-    return NextResponse.json(blob)
-}
+  // ⚠️ The below code is for App Router Route Handlers only
+  try {
+    const blob = await put(
+      `subjects/${filename}`,
+      request.body as ReadableStream,
+      {
+        access: "public",
+      }
+    );
+    return NextResponse.json(blob);
+  } catch (error) {
+    return NextResponse.json(error);
+  }
+};
