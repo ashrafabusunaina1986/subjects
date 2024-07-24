@@ -8,7 +8,7 @@ import { revalidatePath } from "next/cache";
 //add subject
 export async function AddSubjectAction(fd:FormData, dataForm: any, revalidUrl: string) {
   const file:File=fd.get('image') as File
-  const res = await fetch(`https://subjects-s.vercel.app/api/avatar/upload?filename=${file.name}`, {
+  const res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
     method: "POST",
     body: file,
   });
