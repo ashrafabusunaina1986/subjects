@@ -25,14 +25,14 @@ function Subject() {
       setSelectImg(url);
       setLoading(true);
 
-      // const res = await fetch(`https://subjects-s.vercel.app/api/avatar/upload?filename=${file.name}`, {
-      //   method: "POST",
-      //   body: file,
-      // });
+      const res = await fetch(`https://subjects-s.vercel.app/api/avatar/upload?filename=${file.name}`, {
+        method: "POST",
+        body: file,
+      });
 
-      // if (!res.ok) console.log(await res.json());
-      // const b = await res.json();
-      // console.log(b);
+      if (!res.ok) console.log(await res.json());
+      const b = await res.json();
+      console.log(b);
       // setDataForm({
       //   ...dataForm,
       //   image: file.name,
