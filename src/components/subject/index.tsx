@@ -23,32 +23,18 @@ function Subject() {
     if (file) {
       const url: Url = URL.createObjectURL(file);
       setSelectImg(url);
-      setLoading(true);
-
-      // const res = await fetch(`https://subjects-ss.vercel.app/api/avatar/upload?filename=${file.name}`, {
-      //   method: "POST",
-      //   body: file,
-      // });
-
-      // if (!res.ok) console.log(await res.json());
-      // const b = await res.json();
-      // console.log(b);
-      // setDataForm({
-      //   ...dataForm,
-      //   image: file.name,
-      //   pathname: b.pathname,
-      //   url: b.url,
-      // });
-
-      setLoading(false);
     }
   };
-  
+
   async function handleAddSubjectAction(formData: FormData) {
     const file: File = formData.get("image") as File;
     if (file) {
-      
-      const b1 = await AddSubjectAction(formData, dataForm, "/");
+      let res=await fetch(`/api/avatar/upload?filename=${file.name}`,{
+        method:'POST',
+        body:file
+      })
+      const b=(await res.json())as PutBlobResult
+      const b1 = await AddSubjectAction(b, dataForm, "/");
       console.log(b1);
 
       setDataForm(initialFcs);
@@ -59,7 +45,6 @@ function Subject() {
   }
   return (
     <AddSubject
-  
       loading={loading}
       handleAddSubjectAction={handleAddSubjectAction}
       setLoading={setLoading}

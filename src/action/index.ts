@@ -2,17 +2,15 @@
 
 import db from "@/db";
 import Subject from "@/models/subject";
-import { del, put } from "@vercel/blob";
+import { del, put, PutBlobResult } from "@vercel/blob";
 import { revalidatePath } from "next/cache";
 
 //add subject
 export async function AddSubjectAction(
-  fd: FormData,
+  b: PutBlobResult,
   dataForm: any,
   revalidUrl: string
 ) {
-  const file: File = fd.get("image") as File;
-  const b = await put(`subjects/${file.name}`, file, { access: "public" });
   db();
   const s = {
     title: dataForm.title,
@@ -29,7 +27,7 @@ export async function AddSubjectAction(
   await Subject.create(s);
 
   revalidatePath(revalidUrl);
-  return { success: true ,};
+  return { success: true };
 }
 //fetch subjects
 export async function FetchSubjectsAction() {
