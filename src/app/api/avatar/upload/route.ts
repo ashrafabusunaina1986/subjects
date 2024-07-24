@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
-export const POST = async (request: Request) => {
+export async function POST(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url);
   const filename = searchParams.get("filename") as string;
 
@@ -14,4 +14,4 @@ export const POST = async (request: Request) => {
     }
   );
   return NextResponse.json(blob);
-};
+}
