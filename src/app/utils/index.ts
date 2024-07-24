@@ -52,5 +52,5 @@ export const initialFcs = {
   url: "",
 };
 export const v = (f: any) => {
-  return f && Object.values(f).every((i: any) => i.trim() !== "");
+  return f && Object.values(f).every((i) => i && i.toString().trim() !== "");
 };
