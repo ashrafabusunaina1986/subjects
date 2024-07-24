@@ -6,6 +6,7 @@ import Cf from "../cf";
 import { initialFcs, v } from "@/app/utils";
 
 function AddSubject({
+  ons,
   selectImg,
   setSelectImg,
   dataForm,
@@ -31,6 +32,7 @@ function AddSubject({
           <DialogTitle>Add Subject</DialogTitle>
         </DialogHeader>
         <Cf
+        ons={ons}
           loading={loading}
           handleAction={handleAddSubjectAction}
           data={dataForm}

@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 function Cf({
+  ons,
   loading,
   selectImg,
   setSelectImg,
@@ -47,6 +48,7 @@ function Cf({
                   id={item.name}
                   name={item.name}
                   hidden
+                  required
                 />
                 {selectImg ? (
                   <Image
@@ -106,10 +108,11 @@ function Cf({
   };
 
   return (
-    <form action={handleAction}>
+    <form  onSubmit={ons}>
       {fCs.map((item) => ie(item))}
       <div className="flex flex-row gap-0 p-3 mt-4 font-bold text-sm w-full">
-        <button type="submit"
+        <button
+          type="submit"
           // disabled={!btnDisabled}
           className={
             loading

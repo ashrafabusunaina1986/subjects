@@ -43,6 +43,21 @@ function Subject() {
       setLoading(false);
     }
   };
+  async function uploadh(e:React.FormEvent<HTMLFormElement>){
+    e.preventDefault()
+    const fd=new FormData(e.currentTarget)
+    const file: File = fd.get("image") as File;
+    if (file) {
+      const res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
+        method: "POST",
+        body: file,
+      });
+
+      if (!res.ok) console.log(await res.json());
+      const b = await res.json();
+      console.log(b);
+    }
+  }
   async function handleAddSubjectAction(formData: FormData) {
     const file: File = formData.get("image") as File;
     if (file) {
@@ -54,8 +69,8 @@ function Subject() {
       if (!res.ok) console.log(await res.json());
       const b = await res.json();
       console.log(b);
-      const b1 = await AddSubjectAction(formData, dataForm, "/");
-      console.log(b1);
+      // const b1 = await AddSubjectAction(formData, dataForm, "/");
+      // console.log(b1);
 
       setDataForm(initialFcs);
       setSelectImg("");
@@ -65,6 +80,7 @@ function Subject() {
   }
   return (
     <AddSubject
+    ons={uploadh}
       loading={loading}
       handleAddSubjectAction={handleAddSubjectAction}
       setLoading={setLoading}
