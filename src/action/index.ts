@@ -12,10 +12,13 @@ export async function AddSubjectAction(
   revalidUrl: string
 ) {
   const file: File = fd.get("image") as File;
-  let res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
-    method: "POST",
-    body: file,
-  });
+  let res = await fetch(
+    `http:localhost:3000/api/avatar/upload?filename=${file.name}`,
+    {
+      method: "POST",
+      body: file,
+    }
+  );
   const b = (await res.json()) as PutBlobResult;
   db();
   const s = {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { initialFcs } from "@/app/utils";
 import { Url } from "next/dist/shared/lib/router/router";
 import AddSubject from "../add-subject";
@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { PutBlobResult } from "@vercel/blob";
 
 function Subject() {
+  const refForm = useRef<HTMLFormElement | null>(null);
   const router = useRouter();
   const [dataForm, setDataForm] = useState(initialFcs);
   const [selectImg, setSelectImg] = useState<Url>("");
@@ -29,7 +30,6 @@ function Subject() {
   async function handleAddSubjectAction(formData: FormData) {
     const file: File = formData.get("image") as File;
     if (file) {
-      
       const b1 = await AddSubjectAction(formData, dataForm, "/");
       console.log(b1);
 
@@ -41,6 +41,7 @@ function Subject() {
   }
   return (
     <AddSubject
+      ref={refForm}
       loading={loading}
       handleAddSubjectAction={handleAddSubjectAction}
       setLoading={setLoading}
