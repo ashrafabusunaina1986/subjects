@@ -32,7 +32,7 @@ export async function AddSubjectAction(fd:FormData, dataForm: any, revalidUrl: s
   // await Subject.create(s);
 
   revalidatePath(revalidUrl);
-  return { success: true,b };
+  return { success: true };
 }
 //fetch subjects
 export async function FetchSubjectsAction() {
