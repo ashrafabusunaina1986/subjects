@@ -46,21 +46,21 @@ function Subject() {
   async function handleAddSubjectAction(formData: FormData) {
     const file: File = formData.get("image") as File;
     if (file) {
-      const res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
-        method: "POST",
-        body: file,
-      });
+      // const res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
+      //   method: "POST",
+      //   body: file,
+      // });
 
-      if (!res.ok) console.log(await res.json());
-      const b = await res.json();
-      console.log(b);
-      // const b1 = await AddSubjectAction(formData, dataForm, "/");
-      // console.log(b1);
+      // if (!res.ok) console.log(await res.json());
+      // const b = await res.json();
+      // console.log(b);
+      const b1 = await AddSubjectAction(formData, dataForm, "/");
+      console.log(b1);
 
-      // setDataForm(initialFcs);
-      // setSelectImg("");
-      // setVal({ stateDialog: false });
-      // router.push("/");
+      setDataForm(initialFcs);
+      setSelectImg("");
+      setVal({ stateDialog: false });
+      router.push("/");
     }
   }
   return (
