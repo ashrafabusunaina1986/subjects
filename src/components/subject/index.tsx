@@ -29,12 +29,8 @@ function Subject() {
   async function handleAddSubjectAction(formData: FormData) {
     const file: File = formData.get("image") as File;
     if (file) {
-      let res=await fetch(`/api/avatar/upload?filename=${file.name}`,{
-        method:'POST',
-        body:file
-      })
-      const b=(await res.json())as PutBlobResult
-      const b1 = await AddSubjectAction(b, dataForm, "/");
+      
+      const b1 = await AddSubjectAction(formData, dataForm, "/");
       console.log(b1);
 
       setDataForm(initialFcs);

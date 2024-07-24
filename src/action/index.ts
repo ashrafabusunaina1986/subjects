@@ -7,10 +7,16 @@ import { revalidatePath } from "next/cache";
 
 //add subject
 export async function AddSubjectAction(
-  b: PutBlobResult,
+  fd: FormData,
   dataForm: any,
   revalidUrl: string
 ) {
+  const file: File = fd.get("image") as File;
+  let res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
+    method: "POST",
+    body: file,
+  });
+  const b = (await res.json()) as PutBlobResult;
   db();
   const s = {
     title: dataForm.title,
