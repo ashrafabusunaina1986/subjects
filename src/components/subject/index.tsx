@@ -24,7 +24,7 @@ function Subject() {
       const url: Url = URL.createObjectURL(file);
       setSelectImg(url);
       setLoading(true);
-      try {
+    
         const res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
           method: "POST",
           body: file,
@@ -39,9 +39,7 @@ function Subject() {
           pathname: b.pathname,
           url: b.url,
         });
-      } catch (error) {
-        console.log(error);
-      }
+      
 
       setLoading(false);
     }

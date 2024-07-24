@@ -1,6 +1,7 @@
 import { FetchSubjectsAction } from "@/action";
 import Subject from "@/components/subject";
 import ViewSubjects from "@/components/view-subjects";
+import React from "react";
 
 export default async function Home() {
   const subjects = await FetchSubjectsAction();

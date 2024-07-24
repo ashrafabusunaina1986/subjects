@@ -5,7 +5,7 @@ export const POST = async (request: Request) => {
   const filename = searchParams.get("filename") as string;
 
   // ⚠️ The below code is for App Router Route Handlers only
-  try {
+  
     const blob = await put(
       `subjects/${filename}`,
       request.body as ReadableStream,
@@ -14,7 +14,5 @@ export const POST = async (request: Request) => {
       }
     );
     return NextResponse.json(blob);
-  } catch (error) {
-    return NextResponse.json(error);
-  }
+  
 };
