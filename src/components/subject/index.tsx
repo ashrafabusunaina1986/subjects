@@ -14,12 +14,11 @@ function Subject() {
   const [selectImg, setSelectImg] = useState<Url>("");
   const [loading, setLoading] = useState(false);
   const { val, setVal } = useContext(BtnContext);
-  console.log(dataForm);
+
   const handleChangeImg = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     let count = 0;
     Object.values(dataForm).map((i) => i.trim() !== "" && (count += 1));
-    
 
     if (file && count === 5) {
       const url: Url = URL.createObjectURL(file);
@@ -32,8 +31,8 @@ function Subject() {
         });
 
         if (res.ok) {
-          const b = (await res.json()) ;
-
+          const b = await res.json();
+          console.log(b);
           setDataForm({
             ...dataForm,
             image: file.name,
