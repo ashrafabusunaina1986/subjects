@@ -3,9 +3,9 @@ import Link from "next/link";
 import React from "react";
 
 export default function DetatilsSubject({ s }: any) {
-  console.log(s);
+  // console.log(s);
   return (
-    <div className=" flex flex-col items-center justify-center w-11/12 px-3 py-2 relative top-32 left-[4%]">
+    <div className=" flex flex-col items-center justify-center w-11/12 px-3 py-2 relative top-60 md:to-32 lg:top-32 left-[4%]">
       <div className="flex w-full  ">
       <Link  className="text-xs  md:text-sm lg:text-sm hover:bg-slate-400 hover:text-white px-3 py-2 hover:rounded-full" href={'/'}>Subjects</Link>
       </div>
