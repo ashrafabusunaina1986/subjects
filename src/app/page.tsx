@@ -7,7 +7,7 @@ export default async function Home() {
   const subjects = await FetchSubjectsAction();
   console.log(subjects);
   return (
-    <div className="w-11/12 flex flex-col items-center justify-center mx-auto py-32 px-0">
+    <div className="w-11/12 flex flex-col items-center justify-center mx-auto py-60 md:py-32 lg:py-32 px-0">
       <Subject />
       <ViewSubjects subjects={subjects} />
     </div>
