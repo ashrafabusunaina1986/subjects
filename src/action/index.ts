@@ -11,15 +11,15 @@ export async function AddSubjectAction(
   dataForm: any,
   revalidUrl: string
 ) {
-  const file: File = fd.get("image") as File;
-  let res = await fetch(
-    `https://subjects-ss.vercel.app/api/avatar/upload?filename=${file.name}`,
-    {
-      method: "POST",
-      body: file,
-    }
-  );
-  const b = (await res.json()) as PutBlobResult;
+  // const file: File = fd.get("image") as File;
+  // let res = await fetch(
+  //   `https://subjects-ss.vercel.app/api/avatar/upload?filename=${file.name}`,
+  //   {
+  //     method: "POST",
+  //     body: file,
+  //   }
+  // );
+  // const b = (await res.json()) as PutBlobResult;
   db();
   const s = {
     title: dataForm.title,
@@ -28,8 +28,8 @@ export async function AddSubjectAction(
     city: dataForm.city,
     region: dataForm.region,
     image: {
-      filename: b.pathname,
-      url: b.url,
+      filename: dataForm.pathname,
+      url: dataForm.url,
     },
     endDate: new Date().toDateString(),
   };

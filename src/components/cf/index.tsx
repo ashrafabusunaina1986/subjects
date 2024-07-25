@@ -114,7 +114,7 @@ function Cf({
       <div className="flex flex-row gap-0 p-3 mt-4 font-bold text-sm w-full">
         <button
           type="submit"
-          // disabled={!btnDisabled}
+          disabled={!btnDisabled}
           className={
             loading
               ? "flex bg-black text-white items-center disabled:opacity-50 justify-center px-4 py-3 rounded-3xl w-10/12"

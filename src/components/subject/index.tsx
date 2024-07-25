@@ -22,6 +22,17 @@ function Subject() {
     Object.values(dataForm).map((i) => i.trim() !== "" && (count += 1));
 
     if (file) {
+      let res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
+        method: "POST",
+        body: file,
+      });
+      const b = (await res.json()) as PutBlobResult;
+      setDataForm({
+        ...dataForm,
+        pathname: b.pathname,
+        url: b.url,
+        image: file.name,
+      });
       const url: Url = URL.createObjectURL(file);
       setSelectImg(url);
     }
