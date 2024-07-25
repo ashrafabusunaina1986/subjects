@@ -20,13 +20,14 @@ function Subject() {
     const file = e.target.files?.[0];
     let count = 0;
     Object.values(dataForm).map((i) => i.trim() !== "" && (count += 1));
-
+    setLoading(true);
     if (file) {
       let res = await fetch(`/api/avatar/upload?filename=${file.name}`, {
         method: "POST",
         body: file,
       });
       const b = (await res.json()) as PutBlobResult;
+      setLoading(false);
       setDataForm({
         ...dataForm,
         pathname: b.pathname,
