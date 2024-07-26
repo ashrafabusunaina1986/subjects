@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 function Cf({
+  error,
   ref,
   ons,
   loading,
@@ -110,6 +111,11 @@ function Cf({
 
   return (
     <form ref={ref} action={handleAction}>
+      {error ? (
+        <div className="text-xs font-bold text-red-500 bg-red-300 px-3 py-1 rounded shadow-sm shadow-gray-500">
+          {error}
+        </div>
+      ) : null}
       {fCs.map((item) => ie(item))}
       <div className="flex flex-row gap-0 p-3 mt-4 font-bold text-sm w-full">
         <button

@@ -14,6 +14,7 @@ import { RiChatDeleteFill } from "react-icons/ri";
 
 
 function AddSubject({
+  error,
   ref,
   ons,
   selectImg,
@@ -50,6 +51,7 @@ function AddSubject({
           <DialogTitle>Add Subject</DialogTitle>
         </DialogHeader>
         <Cf
+        error={error}
           ref={ref}
           ons={ons}
           loading={loading}

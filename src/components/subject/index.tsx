@@ -14,6 +14,7 @@ function Subject() {
   const [dataForm, setDataForm] = useState(initialFcs);
   const [selectImg, setSelectImg] = useState<Url>("");
   const [loading, setLoading] = useState(false);
+  const  [errors,setErrors]=useState<string>('')
   const { val, setVal } = useContext(BtnContext);
 
   const handleChangeImg = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,15 +45,20 @@ function Subject() {
     if (file) {
       const b1 = await AddSubjectAction(formData, dataForm, "/");
       console.log(b1);
-
-      setDataForm(initialFcs);
-      setSelectImg("");
-      setVal({ stateDialog: false });
-      router.push("/");
+      if (b1?.success) {
+        setErrors('')
+        setDataForm(initialFcs);
+        setSelectImg("");
+        setVal({ stateDialog: false });
+        router.push("/");
+      }else{
+        setErrors(b1.m as string)
+      }
     }
   }
   return (
     <AddSubject
+     error={errors}
       ref={refForm}
       loading={loading}
       handleAddSubjectAction={handleAddSubjectAction}

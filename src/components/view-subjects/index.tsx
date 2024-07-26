@@ -60,8 +60,8 @@ export default function ViewSubjects({ subjects }: any) {
                   alt={subject?.title}
                   className="w-full h-full rounded-lg"
                 />
-                <div className="w-full border-2 border-gray-700 flex items-center justify-center absolute bottom-1 bg-slate-700 opacity-60 rounded-full">
-                  <h1 className="text-xl text-gray-100 font-extrabold s-text">
+                <div className="w-full border-2 border-gray-700 flex items-center justify-center absolute bottom-1 bg-slate-100  rounded-lg">
+                  <h1 className="text-xs text-gray-800 font-abold ">
                     {subject?.title}
                   </h1>
                 </div>
